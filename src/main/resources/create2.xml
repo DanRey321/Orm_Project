@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<create>
+    <carsTable>
+        <carid name="serial primary key">int</carid>
+        <model>text</model>
+        <make>text</make>
+        <year>text</year>
+    </carsTable>
+</create>
