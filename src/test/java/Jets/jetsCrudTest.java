@@ -1,18 +1,13 @@
 package Jets;
 
 import Model.Jets;
-import Model.Keyboard;
-import QueryPath.EntityManager;
-import org.junit.*;
+import Manager.EntityManager;
 
 import java.sql.SQLException;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import QueryPath.EntityManager;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.runner.manipulation.Alphanumeric;
 
 //@TestMethodOrder(Alphanumeric.class)
 public class jetsCrudTest {
@@ -33,6 +28,7 @@ public class jetsCrudTest {
 
         em.update(jets1);
         em.read(jets1);
+        em.readByValue(jets1);
     }
 
     @After

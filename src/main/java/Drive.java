@@ -1,15 +1,9 @@
-import Model.Jets;
-import Model.Keyboard;
-import Model.Users;
-import Model.carsTable;
-import QueryPath.EntityManager;
-
 import java.sql.SQLException;
 
 public class Drive {
     public static void main(String[] args) throws SQLException, IllegalAccessException {
 
-//        Test New Table Created: 
+//        Test New Table Created:
 
 //        EntityManager em = new EntityManager();
 //        carsTable cars = new carsTable();

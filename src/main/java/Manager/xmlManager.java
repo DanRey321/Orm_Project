@@ -1,4 +1,4 @@
-package XML;
+package Manager;
 
 import Queries.xmlDDL;
 import Exception.IncorrectSchemaException;
@@ -12,14 +12,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
 
-public class entityManager {
+public class xmlManager {
     private final ArrayList<String> columnsArray ;
     private final ArrayList<String> columnsArrayValues ;
     private String queryType;
     private String constraint;
     xmlDDL xmlDDL = new xmlDDL();
 
-    public entityManager(){
+    public xmlManager(){
         columnsArray = new ArrayList<>();
         columnsArrayValues = new ArrayList<>();
 

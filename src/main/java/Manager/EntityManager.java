@@ -1,4 +1,4 @@
-package QueryPath;
+package Manager;
 import Queries.Delete;
 import Queries.Insert;
 import Queries.Select;
@@ -10,13 +10,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
 
-public class EntityManager<T> {
+public class EntityManager<O> {
 
 
-    public void insert(T t) throws SQLException, IllegalAccessException {
-        Insert in = new Insert(t);
+    public void insert(O o) throws SQLException, IllegalAccessException {
+        Insert in = new Insert(o);
         String sql = in.insertQuery();
         //System.out.println(sql);
         try{
@@ -34,22 +33,22 @@ public class EntityManager<T> {
 
     }
 
-    public void update(T t) throws IllegalAccessException {
-        Update update = new Update(t);
+    public void update(O o) throws IllegalAccessException {
+        Update update = new Update(o);
         String sql = update.updateQuery();
-        int size = t.getClass().getDeclaredFields().length;
+        int size = o.getClass().getDeclaredFields().length;
         int index = 1;
         try{
             ConnectionSession session = new ConnectionSession();
             Connection connection = session.getActiveConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            Field[] fields = t.getClass().getDeclaredFields();
+            Field[] fields = o.getClass().getDeclaredFields();
             for(int i = 0; i < size ; i++){
                 fields[i].setAccessible(true);
-                pstmt.setObject(index, fields[i].get(t));
+                pstmt.setObject(index, fields[i].get(o));
                 index++;
             }
-            pstmt.setObject(index, fields[0].get(t));
+            pstmt.setObject(index, fields[0].get(o));
             System.out.println(pstmt.toString());
             pstmt.executeUpdate();
             session.close();
@@ -61,8 +60,8 @@ public class EntityManager<T> {
 
     }
 
-    public void delete(T t){
-        Delete de = new Delete(t);
+    public void delete(O o){
+        Delete de = new Delete(o);
         String sql = de.deleteQuery();
         int index = 1;
 
@@ -71,9 +70,9 @@ public class EntityManager<T> {
             Connection connection = session.getActiveConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
-            Field[] fields = t.getClass().getDeclaredFields();
+            Field[] fields = o.getClass().getDeclaredFields();
             fields[0].setAccessible(true);
-            pstmt.setObject(index, fields[0].get(t));
+            pstmt.setObject(index, fields[0].get(o));
 
             System.out.println(pstmt.toString());
             pstmt.executeUpdate();
@@ -85,8 +84,8 @@ public class EntityManager<T> {
 
     }
 
-    public void deleteByValue(T t) throws IllegalAccessException {
-        Delete de = new Delete(t);
+    public void deleteByValue(O o) throws IllegalAccessException {
+        Delete de = new Delete(o);
         String sql = de.deleteQueryByValue();
         int index = 1;
 
@@ -110,8 +109,8 @@ public class EntityManager<T> {
     }
 
 
-    public void read(T t){
-        Select select = new Select(t);
+    public void read(O o){
+        Select select = new Select(o);
         String sql = select.selectQuery();
         int index = 1;
         StringBuilder tableValues = new StringBuilder();
@@ -144,8 +143,8 @@ public class EntityManager<T> {
 
     }
 
-    public void readByValue(T t) throws IllegalAccessException {
-        Select select = new Select(t);
+    public void readByValue(O o) throws IllegalAccessException {
+        Select select = new Select(o);
         String sql = select.selectQueryByColumn();
         int index = 1;
         StringBuilder tableValues = new StringBuilder();

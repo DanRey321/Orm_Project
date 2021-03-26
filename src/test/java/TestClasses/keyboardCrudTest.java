@@ -5,10 +5,9 @@ import Model.Jets;
 import Model.Keyboard;
 import Model.Users;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import QueryPath.EntityManager;
+import Manager.EntityManager;
 
 import java.sql.SQLException;
 
