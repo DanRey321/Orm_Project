@@ -1,3 +1,6 @@
+import Manager.EntityManager;
+import Model.carsTable;
+
 import java.sql.SQLException;
 
 public class Drive {
@@ -5,14 +8,15 @@ public class Drive {
 
 //        Test New Table Created:
 
-//        EntityManager em = new EntityManager();
-//        carsTable cars = new carsTable();
-//        cars.setMake("Dodge");
-//        cars.setModel("Charger");
-//        cars.setYear("2012");
-//
-//        em.insert(cars);
-//        em.read(cars);
+        EntityManager em = new EntityManager();
+        carsTable cars = new carsTable();
+        cars.setMake("Dodge");
+        cars.setModel("Charger");
+        cars.setYear("2012");
+
+        em.insert(cars);
+        em.read(cars);
+
 
 
 

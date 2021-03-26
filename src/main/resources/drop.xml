@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<drop>
+    <exampleTable>
+        <message>Table to delete</message>
+    </exampleTable>
+</drop>
